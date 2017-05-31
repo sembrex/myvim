@@ -68,6 +68,8 @@ set clipboard=unnamedplus
 set wildignore+=*/node_modules/*,*/vendor/*,*/bower_components/*
 set guifont=Monaco\ for\ Powerline:h12
 
+hi Pmenu ctermbg=238 gui=bold
+
 "color molokai
 color karomap
 
@@ -101,6 +103,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers = ['php']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_css_checkers = ['csslint']
+noremap <silent> <F4> :SyntasticCheck<CR>
+noremap! <silent> <F4> <ESC>:SyntasticCheck<CR>
 
 
 " ========================================================================================
@@ -159,14 +163,14 @@ function! PhpSyntaxOverride()
   hi! def link phpDocParam phpType
 endfunction
 
-"augroup phpSyntaxOverride
-"  autocmd!
-"  autocmd FileType php call PhpSyntaxOverride()
-"augroup END
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
 
 " autoclose omni
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 " ========================================================================================
@@ -174,3 +178,28 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" KEY MAPPINGS ============================================
+nnoremap <C-v> <C-v>
+vmap <Tab> >
+vmap <S-Tab> <
+
+" remove whitespaces
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" fold tags
+nnoremap <leader>f vatzf
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+" AUTOCOMPLETE ============================================
+set completeopt=longest,menuone
+
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType cpp set omnifunc=omni#cpp#complete#Main

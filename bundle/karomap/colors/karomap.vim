@@ -9,10 +9,10 @@ let g:colors_name = "karomap"
 
 hi Cursor ctermfg=237 ctermbg=230 cterm=NONE guifg=#263238 guibg=#EEFFFF gui=NONE
 hi Visual ctermfg=NONE ctermbg=240 cterm=NONE guifg=NONE guibg=#37474F gui=NONE
-hi CursorLine ctermbg=240 cterm=NONE guifg=NONE guibg=#37474F gui=NONE
-hi CursorColumn ctermbg=240 cterm=NONE guifg=NONE guibg=#37474F gui=NONE
+hi CursorLine ctermbg=16 cterm=NONE guifg=NONE guibg=#37474F gui=NONE
+hi CursorColumn ctermbg=246 cterm=NONE guifg=NONE guibg=#37474F gui=NONE
 hi ColorColumn ctermfg=NONE ctermbg=239 cterm=NONE guifg=NONE guibg=#3d3f49 gui=NONE
-hi LineNr ctermfg=239 ctermbg=NONE cterm=NONE guifg=#65737E guibg=#263238 gui=NONE
+hi LineNr ctermfg=66 ctermbg=NONE cterm=NONE guifg=#65737E guibg=#263238 gui=NONE
 hi CursorLineNr ctermfg=228 ctermbg=240 cterm=NONE guifg=#FFCB6B guibg=#37474F gui=NONE
 hi VertSplit ctermfg=231 ctermbg=236 cterm=bold guifg=#64666d guibg=#64666d gui=bold
 hi MatchParen ctermfg=140 ctermbg=NONE cterm=underline guifg=#C792EA guibg=NONE gui=underline
