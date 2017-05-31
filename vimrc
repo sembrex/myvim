@@ -98,6 +98,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_php_checkers = ['php']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_css_checkers = ['csslint']
+
 
 " ========================================================================================
 " TAB and Shift-TAB in normal mode cycle buffers
@@ -134,7 +138,6 @@ vmap <Leader>P "+P
 " ========================================================================================
 " Autostart
 let g:autotagTagsFile="tags,tags.vendors"
-let g:syntastic_php_checkers = ['php']
 
 
 " ========================================================================================
