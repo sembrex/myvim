@@ -60,12 +60,16 @@ set shell=/bin/zsh
 set lazyredraw
 set matchtime=3
 
-set tags+=tags,vendor.tags
+set tags+=tags,tags.vendors
 set laststatus=2
 set listchars=tab:▸\ ,eol:¬
 set clipboard=unnamedplus
 
-color dracula
+set wildignore+=*/node_modules/*,*/vendor/*,*/bower_components/*
+set guifont=Monaco\ for\ Powerline:h12
+
+"color molokai
+color karomap
 
 
 " ========================================================================================
@@ -129,13 +133,14 @@ vmap <Leader>P "+P
 
 " ========================================================================================
 " Autostart
-let g:autotagTagsFile=".tags"
+let g:autotagTagsFile="tags,tags.vendors"
 let g:syntastic_php_checkers = ['php']
 
 
 " ========================================================================================
 " Functions
 " vim-php-namespace
+let g:php_namespace_sort_after_insert = 1
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
@@ -151,10 +156,14 @@ function! PhpSyntaxOverride()
   hi! def link phpDocParam phpType
 endfunction
 
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
+"augroup phpSyntaxOverride
+"  autocmd!
+"  autocmd FileType php call PhpSyntaxOverride()
+"augroup END
+
+" autoclose omni
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 " ========================================================================================

@@ -28,3 +28,12 @@
 [submodule "bundle/vim-php-namespace"]
         path = bundle/vim-php-namespace
         url = https://github.com/arnaud-lb/vim-php-namespace.git
+[submodule "bundle/vim-autotag"]
+	path = bundle/vim-autotag
+	url = https://github.com/craigemery/vim-autotag.git
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "bundle/SerialExperimentsLain"]
+	path = bundle/SerialExperimentsLain
+	url = https://github.com/lu-ren/SerialExperimentsLain.git
