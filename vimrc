@@ -41,7 +41,9 @@ set undolevels=10000
 set nobackup
 set noswapfile
 
-"set cursorline
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
+
 set ttyfast
 set ruler
 set backspace=indent,eol,start
@@ -63,6 +65,8 @@ set laststatus=2
 set listchars=tab:▸\ ,eol:¬
 set clipboard=unnamedplus
 
+color dracula
+
 
 " ========================================================================================
 " Changing Leader Key
@@ -74,6 +78,9 @@ let mapleader = ","
 noremap <leader>m :NERDTreeToggle<cr>
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeChDirMode = 2
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 " ========================================================================================
@@ -111,7 +118,6 @@ autocmd FileType php,css,js,html,vue autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " ========================================================================================
 " Map copy delete and paste to system clipboard
-
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 
@@ -136,6 +142,8 @@ function! IPhpInsertUse()
 endfunction
 autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 
 " php.vim
 function! PhpSyntaxOverride()
