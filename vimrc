@@ -148,8 +148,8 @@ function! IPhpExpandClass()
     call PhpExpandClass()
     call feedkeys('a', 'n')
 endfunction
-autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+au FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+au FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 
 " sort use
 au FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
@@ -176,6 +176,9 @@ vnoremap <F9> zf
 
 iabbrev </ </<C-X><C-O>
 
+nnoremap ; :
+vnoremap ; :
+
 
 "" AUTOCOMPLETE ============================================
 set completeopt-=preview
@@ -195,8 +198,8 @@ let g:ycm_semantic_triggers =  {
   \ }
 
 " autoclose omni
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"au CursorMovedI * if pumvisible() == 0|pclose|endif
+"au InsertLeave * if pumvisible() == 0|pclose|endif
 
 "set completeopt=longest,menuone
 "
@@ -219,5 +222,4 @@ augroup phpSyntaxOverride
   au!
   au FileType php call PhpSyntaxOverride()
 augroup END
-
 
