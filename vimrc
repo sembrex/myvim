@@ -1,19 +1,16 @@
-" ========================================================================================
-" Pathogen settings.
+" PATHOGEN ================================================
 filetype off
 execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
 
-" ========================================================================================
-" Make vim incompatbile to vi.
+" VI INCOMPATIBLE =========================================
 set nocompatible
 set modelines=0
 
 
-" ========================================================================================
-" TAB settings.
+" TAB =====================================================
 set tabstop=8
 set shiftwidth=4
 set softtabstop=0
@@ -21,8 +18,7 @@ set expandtab
 set smarttab
 
 
-" ========================================================================================
-" More Common Settings.
+" COMMON SETTING ==========================================
 set omnifunc=syntaxcomplete#Complete
 set mouse=a
 set encoding=utf-8
@@ -42,7 +38,6 @@ set nobackup
 set noswapfile
 
 set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
 
 set ttyfast
 set ruler
@@ -60,37 +55,36 @@ set shell=/bin/zsh
 set lazyredraw
 set matchtime=3
 
-set tags+=tags,tags.vendors
 set laststatus=2
 set listchars=tab:▸\ ,eol:¬
 set clipboard=unnamedplus
 
 set wildignore+=*/node_modules/*,*/vendor/*,*/bower_components/*
-set guifont=Monaco\ for\ Powerline:h12
+set tags+=tags,tags.vendors
+let g:autotagTagsFile="tags,tags.vendors"
 
-hi Pmenu ctermbg=238 gui=bold
+set guifont=Monaco\ for\ Powerline:h12
 
 "color molokai
 color karomap
 
 
-" ========================================================================================
-" Changing Leader Key
+" LEADER KEY ==============================================
 let mapleader = ","
 
 
-" ========================================================================================
-" Mapping to NERDTree
-noremap <leader>m :NERDTreeToggle<cr>
+" NERDTree ================================================
+noremap <Leader>m :NERDTreeToggle<cr>
+
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeChDirMode = 2
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+au StdinReadPre * let s:std_in=1
+au VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
-" ========================================================================================
-" Syntastic
+" SYNTASTIC ===============================================
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -103,33 +97,33 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers = ['php']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_css_checkers = ['csslint']
+
 noremap <silent> <F4> :SyntasticCheck<CR>
 noremap! <silent> <F4> <ESC>:SyntasticCheck<CR>
 
 
-" ========================================================================================
-" TAB and Shift-TAB in normal mode cycle buffers
+" BUFFER ==================================================
 nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
 nmap <Leader>x :bd<CR>
+nmap <C-x> :bd<CR>
+nmap <Leader>w :wqa<CR>
+nmap <Leader>q :qa!<CR>
+
 nmap <F8> :TagbarToggle<CR>
-nmap <Leader>q :wqa<CR>
 
 
-" ========================================================================================
-" Events
+" AUTO SAVE, REDRAW, RESIZE ===============================
 au FocusLost * :wa
 au FocusGained * :redraw!
 au VimResized * :wincmd =
 
 
-" ========================================================================================
-" Trim trailing spaces on save
-autocmd FileType php,css,js,html,vue autocmd BufWritePre <buffer> %s/\s\+$//e
+" TRIM TRAILING SPACES ====================================
+au FileType php,css,js,html,vue au BufWritePre <buffer> %s/\s\+$//e
 
 
-" ========================================================================================
-" Map copy delete and paste to system clipboard
+" COPY, DELETE, PASTE =====================================
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 
@@ -139,67 +133,91 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 
-" ========================================================================================
-" Autostart
-let g:autotagTagsFile="tags,tags.vendors"
-
-
-" ========================================================================================
-" Functions
-" vim-php-namespace
+" vim-php-namespace =======================================
+" insert use
 let g:php_namespace_sort_after_insert = 1
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
 endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
-autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
-autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+au FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+au FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 
-" php.vim
+" expand class
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+
+" sort use
+au FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+au FileType php noremap <Leader>s :call PhpSortUse()<CR>
+
+
+" AIRLINE =================================================
+" let g:airline_theme='molokai'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+
+" KEY MAPPING =============================================
+nnoremap <Leader>v <C-v>
+vmap <Tab> >
+vmap <S-Tab> <
+
+" fold tags
+nnoremap <Leader>f vatzf
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+iabbrev </ </<C-X><C-O>
+
+
+"" AUTOCOMPLETE ============================================
+set completeopt-=preview
+
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \             're!\[.*\]\s'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::', ' '],
+  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \ }
+
+" autoclose omni
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+"set completeopt=longest,menuone
+"
+"au FileType php set omnifunc=phpcomplete#CompletePHP
+"au FileType python set omnifunc=pythoncomplete#Complete
+"au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"au FileType html set omnifunc=htmlcomplete#CompleteTags
+"au FileType xml set omnifunc=xmlcomplete#CompleteTags
+"au FileType css set omnifunc=csscomplete#CompleteCSS
+"au FileType cpp set omnifunc=omni#cpp#complete#Main
+
+
+" php.vim =================================================
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
   hi! def link phpDocParam phpType
 endfunction
 
 augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
+  au!
+  au FileType php call PhpSyntaxOverride()
 augroup END
 
-" autoclose omni
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-
-" ========================================================================================
-" Airline
-" let g:airline_theme='molokai'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
-" KEY MAPPINGS ============================================
-nnoremap <C-v> <C-v>
-vmap <Tab> >
-vmap <S-Tab> <
-
-" remove whitespaces
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" fold tags
-nnoremap <leader>f vatzf
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
-
-" AUTOCOMPLETE ============================================
-set completeopt=longest,menuone
-
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
