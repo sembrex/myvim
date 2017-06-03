@@ -23,6 +23,7 @@ set omnifunc=syntaxcomplete#Complete
 set mouse=a
 set encoding=utf-8
 set scrolloff=3
+set title
 
 set showmode
 set showcmd
@@ -58,6 +59,15 @@ set matchtime=3
 set laststatus=2
 set listchars=tab:▸\ ,eol:¬
 set clipboard=unnamedplus
+
+set splitbelow
+set splitright
+
+set wrap
+set linebreak
+set nolist
+set textwidth=0
+set wrapmargin=0
 
 set wildignore+=*/node_modules/*,*/vendor/*,*/bower_components/*
 set tags+=tags,tags.vendors
@@ -107,8 +117,8 @@ nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
 nmap <Leader>x :bd<CR>
 nmap <C-x> :bd<CR>
-nmap <Leader>w :wqa<CR>
 nmap <Leader>q :qa!<CR>
+nmap <Leader>w :wa<CR>
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -174,13 +184,23 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-iabbrev </ </<C-X><C-O>
+iabbrev </ </<C-X><C-O><Del><Del>
 
 nnoremap ; :
 vnoremap ; :
 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
-"" AUTOCOMPLETE ============================================
+
+" delimitMate =============================================
+let g:delimitMate_expand_cr=1
+let g:delimitMate_jump_expansion=1
+
+
+" AUTOCOMPLETE ============================================
 set completeopt-=preview
 
 let g:ycm_semantic_triggers =  {
