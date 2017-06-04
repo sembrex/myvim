@@ -76,7 +76,7 @@ let g:autotagTagsFile="tags,tags.vendors"
 set guifont=Monaco\ for\ Powerline:h12
 
 "color molokai
-color karomap
+color karomap 
 
 
 " LEADER KEY ==============================================
