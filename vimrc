@@ -62,6 +62,7 @@ set clipboard=unnamedplus
 
 set splitbelow
 set splitright
+set fillchars+=vert:\ 
 
 set wrap
 set linebreak
