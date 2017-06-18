@@ -1,9 +1,9 @@
-#VIM Laravel IDE
+# VIM Laravel IDE
 My VIM configuration and plugins for developing laravel apps
 
 
 
-###Plugins
+### Plugins
 - [colorschemes](https://github.com/flazz/vim-colorschemes)
 - [ctrlp.vim](https://github.com/kien/ctrlp.vim)
 - [delimitMate](https://github.com/Raimondi/delimitMate)
@@ -26,7 +26,7 @@ My VIM configuration and plugins for developing laravel apps
 
 
 
-###Installation
+### Installation
 - Backup your existing ~/.vim directory
 ```bash
 mv ~/.vim ~/.vim_backup
@@ -46,12 +46,12 @@ git submodule update --init --recursive
 
 
 
-###Post Installation
-####Build YouCompleteMe
+### Post Installation
+#### Build YouCompleteMe
 [__Click here for official installation guide__](https://github.com/Valloric/YouCompleteMe#installation)
-####Build Universal Ctags (optional)
+#### Build Universal Ctags (optional)
 Universal ctags is required for generating tags with PHP Trait support. See [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace) documentation [here](https://github.com/arnaud-lb/vim-php-namespace) for more detail.
-####Generate Project Tags
+#### Generate Project Tags
 These tags are required by [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
 
 - Using universal ctags
