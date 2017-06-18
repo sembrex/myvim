@@ -2,6 +2,7 @@
 My VIM configuration and plugins for developing laravel apps
 
 
+
 ###Plugins
 - [colorschemes](https://github.com/flazz/vim-colorschemes)
 - [ctrlp.vim](https://github.com/kien/ctrlp.vim)
@@ -21,6 +22,7 @@ My VIM configuration and plugins for developing laravel apps
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 - [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
 - [vim-surround](https://github.com/tpope/vim-surround)
+- [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 
 
@@ -41,3 +43,27 @@ cd ~/.vim
 ```bash
 git submodule update --init --recursive
 ```
+
+
+
+###Post Installation
+####Build YouCompleteMe
+[__Click here for official installation guide__](https://github.com/Valloric/YouCompleteMe#installation)
+####Build Universal Ctags (optional)
+Universal ctags is required for generating tags with PHP Trait support. See [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace) documentation [here](https://github.com/arnaud-lb/vim-php-namespace) for more detail.
+####Generate Project Tags
+These tags are required by [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
+
+- Using universal ctags
+```bash
+cd your_project_path
+ctags -R --PHP-kinds=cfit -f tags.vendors vendor
+ctags -R --PHP-kinds=cfit app
+```
+- Using ctags
+```bash
+cd your_project_path
+ctags -R --PHP-kinds=cfi --regex-php="/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i" -f tags.vendors vendor
+ctags -R --PHP-kinds=cfi --regex-php="/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i" app
+```
+>Note: if you change above tags filename, make sure you change tags and autotag configuration in **vimrc** line 74 & 75
