@@ -13,8 +13,14 @@ My VIM configuration and plugins for developing laravel apps
 - [php.vim](https://github.com/StanAngeloff/php.vim)
 - [syntastic](https://github.com/vim-syntastic/syntastic)
 - [tagbar](https://github.com/majutsushi/tagbar)
-- [unite](https://github.com/Shougo/unite.vim)
 - [vim-airline](https://github.com/vim-airline/vim-airline)
+- [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+- [vim-autotag](https://github.com/craigemery/vim-autotag)
+- [vim-blade](https://github.com/jwalton512/vim-blade)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+- [vim-php-namespace](https://github.com/arnaud-lb/vim-php-namespace)
+- [vim-surround](https://github.com/tpope/vim-surround)
 
 
 
