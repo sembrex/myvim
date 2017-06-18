@@ -62,7 +62,7 @@ set clipboard=unnamedplus
 
 set splitbelow
 set splitright
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 set wrap
 set linebreak
@@ -74,10 +74,22 @@ set wildignore+=*/node_modules/*,*/vendor/*,*/bower_components/*
 set tags+=tags,tags.vendors
 let g:autotagTagsFile="tags,tags.vendors"
 
-set guifont=Monaco\ for\ Powerline:h12
-
 "color molokai
-color karomap 
+color karomap
+
+
+" GUI =====================================================
+if has('gui_running')
+    set guioptions-=T
+    set lines=50 columns=150 linespace=3
+    set guifont=Monaco\ for\ Powerline\ 9
+endif
+
+
+" SEARCH ==================================================
+set ignorecase
+set incsearch
+set hlsearch
 
 
 " LEADER KEY ==============================================
@@ -116,8 +128,8 @@ noremap! <silent> <F4> <ESC>:SyntasticCheck<CR>
 " BUFFER ==================================================
 nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
-nmap <Leader>x :bd<CR>
-nmap <C-x> :bd<CR>
+nmap <Leader>x :bp <BAR> bd #<CR>
+nmap <C-x> :bp <BAR> bd #<CR>
 nmap <Leader>q :qa!<CR>
 nmap <Leader>w :wa<CR>
 
@@ -131,7 +143,7 @@ au VimResized * :wincmd =
 
 
 " TRIM TRAILING SPACES ====================================
-au FileType php,css,js,html,vue au BufWritePre <buffer> %s/\s\+$//e
+au FileType php,css,js,html,vue,py au BufWritePre <buffer> %s/\s\+$//e
 
 
 " COPY, DELETE, PASTE =====================================
@@ -195,6 +207,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+noremap / /\v
+
+nnoremap <Leader>n :enew<CR>
 
 " delimitMate =============================================
 let g:delimitMate_expand_cr=1
