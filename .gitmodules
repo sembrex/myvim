@@ -61,3 +61,9 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/tsuquyomi"]
+	path = bundle/tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git

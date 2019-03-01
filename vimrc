@@ -59,6 +59,9 @@ set matchtime=3
 set laststatus=2
 set listchars=tab:▸\ ,eol:¬
 set clipboard=unnamedplus
+if has('macunix')
+    set clipboard=unnamed
+endif
 
 set splitbelow
 set splitright
