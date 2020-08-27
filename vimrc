@@ -65,7 +65,7 @@ endif
 
 set splitbelow
 set splitright
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 set wrap
 set linebreak
@@ -73,11 +73,8 @@ set nolist
 set textwidth=0
 set wrapmargin=0
 
-set wildignore+=*/node_modules/*,*/vendor/*,*/bower_components/*
-set tags+=tags,tags.vendors
-let g:autotagTagsFile="tags,tags.vendors"
+set wildignore+=*/node_modules/*,*/vendor/*
 
-"color molokai
 color karomap
 
 
@@ -120,8 +117,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_php_checkers = ['php']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_css_checkers = ['csslint']
 
 noremap <silent> <F4> :SyntasticCheck<CR>
@@ -159,29 +157,6 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 
-" vim-php-namespace =======================================
-" insert use
-let g:php_namespace_sort_after_insert = 1
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-au FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-au FileType php noremap <Leader>u :call PhpInsertUse()<CR>
-
-" expand class
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-au FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
-au FileType php noremap <Leader>e :call PhpExpandClass()<CR>
-
-" sort use
-au FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
-au FileType php noremap <Leader>s :call PhpSortUse()<CR>
-
-
 " AIRLINE =================================================
 " let g:airline_theme='molokai'
 let g:airline_powerline_fonts = 1
@@ -214,6 +189,7 @@ noremap / /\v
 
 nnoremap <Leader>n :enew<CR>
 
+
 " delimitMate =============================================
 let g:delimitMate_expand_cr=1
 let g:delimitMate_jump_expansion=1
@@ -235,30 +211,3 @@ let g:ycm_semantic_triggers =  {
   \   'lua' : ['.', ':'],
   \   'erlang' : [':'],
   \ }
-
-" autoclose omni
-"au CursorMovedI * if pumvisible() == 0|pclose|endif
-"au InsertLeave * if pumvisible() == 0|pclose|endif
-
-"set completeopt=longest,menuone
-"
-"au FileType php set omnifunc=phpcomplete#CompletePHP
-"au FileType python set omnifunc=pythoncomplete#Complete
-"au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"au FileType html set omnifunc=htmlcomplete#CompleteTags
-"au FileType xml set omnifunc=xmlcomplete#CompleteTags
-"au FileType css set omnifunc=csscomplete#CompleteCSS
-"au FileType cpp set omnifunc=omni#cpp#complete#Main
-
-
-" php.vim =================================================
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-endfunction
-
-augroup phpSyntaxOverride
-  au!
-  au FileType php call PhpSyntaxOverride()
-augroup END
-
