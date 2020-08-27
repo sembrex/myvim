@@ -4,12 +4,6 @@
 [submodule "bundle/nerdtree"]
     path = bundle/nerdtree
     url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/dracula-theme"]
-    path = bundle/dracula-theme
-    url = https://github.com/dracula/vim.git
-[submodule "bundle/php.vim"]
-    path = bundle/php.vim
-    url = https://github.com/StanAngeloff/php.vim.git
 [submodule "bundle/syntastic"]
     path = bundle/syntastic
     url = https://github.com/vim-syntastic/syntastic.git
@@ -22,18 +16,6 @@
 [submodule "bundle/vim-airline-themes"]
     path = bundle/vim-airline-themes
     url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "bundle/vim-php-namespace"]
-    path = bundle/vim-php-namespace
-    url = https://github.com/arnaud-lb/vim-php-namespace.git
-[submodule "bundle/vim-autotag"]
-    path = bundle/vim-autotag
-    url = https://github.com/craigemery/vim-autotag.git
-[submodule "bundle/colorschemes"]
-    path = bundle/colorschemes
-    url = https://github.com/flazz/vim-colorschemes.git
-[submodule "bundle/vim-blade"]
-    path = bundle/vim-blade
-    url = https://github.com/jwalton512/vim-blade.git
 [submodule "bundle/html5.vim"]
     path = bundle/html5.vim
     url = https://github.com/othree/html5.vim.git
@@ -43,9 +25,6 @@
 [submodule "bundle/vim-surround"]
     path = bundle/vim-surround
     url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/YouCompleteMe"]
-    path = bundle/YouCompleteMe
-    url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "bundle/vimproc.vim"]
     path = bundle/vimproc.vim
     url = https://github.com/Shougo/vimproc.vim.git
@@ -61,9 +40,3 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/typescript-vim"]
-	path = bundle/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "bundle/tsuquyomi"]
-	path = bundle/tsuquyomi
-	url = https://github.com/Quramy/tsuquyomi.git
