@@ -66,4 +66,4 @@ cd your_project_path
 ctags -R --PHP-kinds=cfi --regex-php="/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i" -f tags.vendors vendor
 ctags -R --PHP-kinds=cfi --regex-php="/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i" app
 ```
->Note: if you change above tags filename, make sure you change tags and autotag configuration in **vimrc** line 74 & 75
+>Note: if you change above tags filename, make sure you change tags and autotag configuration in **vimrc** line 77 & 78
