@@ -107,25 +107,6 @@ au VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | 
 " au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
-" SYNTASTIC ===============================================
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_php_checkers = ['php']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_css_checkers = ['csslint']
-
-noremap <silent> <F4> :SyntasticCheck<CR>
-noremap! <silent> <F4> <ESC>:SyntasticCheck<CR>
-
-
 " BUFFER ==================================================
 nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
@@ -133,8 +114,6 @@ nmap <Leader>x :bp <BAR> bd #<CR>
 nmap <C-x> :bp <BAR> bd #<CR>
 nmap <Leader>q :qa!<CR>
 nmap <Leader>w :wa<CR>
-
-nmap <F8> :TagbarToggle<CR>
 
 
 " AUTO SAVE, REDRAW, RESIZE ===============================
